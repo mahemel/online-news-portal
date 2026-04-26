@@ -1,3 +1,8 @@
+export const metadata = {
+    title: "Online News Portal | About",
+    description: "",
+};
+
 const AboutPage = () => {
     return (
         <div>

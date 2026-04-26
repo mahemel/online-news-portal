@@ -21,7 +21,7 @@ const Navbar = () => {
     ];
 
     return (
-        <div className="grid grid-cols-3 items-center">
+        <div className="grid grid-cols-3 items-center pt-7.5">
             <div></div>
             <ul className="flex gap-8 justify-center">
                 {links.map((link) => (

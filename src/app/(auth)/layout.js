@@ -1,10 +1,10 @@
-import Header from '@/components/shared/Header';
 import { roboto } from '../layout';
+import Navbar from '@/components/shared/Navbar';
 
 const AuthLayout = ({ children }) => {
     return (
         <div className={roboto.className}>
-            <Header></Header>
+            <Navbar></Navbar>
             {children}
         </div>
     );

@@ -1,3 +1,8 @@
+export const metadata = {
+    title: "Online News Portal | Career",
+    description: "",
+};
+
 const CareerPage = () => {
     return (
         <div>
