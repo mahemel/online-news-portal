@@ -1,5 +1,8 @@
+"use client";
 import Link from "next/link";
 import Navlink from "./Navlink";
+import { authClient } from "@/lib/auth-client";
+import { signOut } from "better-auth/api";
 
 const Navbar = () => {
     const links = [
@@ -20,6 +23,12 @@ const Navbar = () => {
         },
     ];
 
+    const { data: session } = authClient.useSession();
+
+    const handleSignOut = () => {
+        authClient.signOut();
+    };
+
     return (
         <div className="grid grid-cols-3 items-center pt-7.5">
             <div></div>
@@ -34,9 +43,23 @@ const Navbar = () => {
             </ul>
 
             <div className="flex justify-end">
-                <Link className="btn btn-neutral rounded-none" href={"/login"}>
-                    Login
-                </Link>
+                {session?.user ? (
+                    <>
+                        <div className="flex items-center gap-4">
+                            <p>{session.user.name}</p>
+                            <button className="btn" onClick={handleSignOut}>
+                                Sign Out
+                            </button>
+                        </div>
+                    </>
+                ) : (
+                    <Link
+                        className="btn btn-neutral rounded-none"
+                        href={"/login"}
+                    >
+                        Login
+                    </Link>
+                )}
             </div>
         </div>
     );
