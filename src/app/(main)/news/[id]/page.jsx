@@ -1,7 +1,7 @@
-import Social from "@/components/homepage/Social";
 import { getNewsDetailById } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import React from "react";
 
 export async function generateMetadata({ params }) {
@@ -19,9 +19,13 @@ const NewsDetailPage = async ({ params }) => {
 
     const news = await getNewsDetailById(id);
 
+    if (!news) {
+        return notFound();
+    }
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-15">
-            <div className="col-span-9 space-y-5">
+        <div className="mt-15">
+            <div className="w-8/12 mx-auto space-y-5">
                 <div className="card bg-base-100 border border-[#E7E7E7] rounded-md">
                     <div className="flex items-center gap-3 p-4 bg-gray-200">
                         <Image
@@ -62,8 +66,6 @@ const NewsDetailPage = async ({ params }) => {
                     </div>
                 </div>
             </div>
-
-            <Social></Social>
         </div>
     );
 };

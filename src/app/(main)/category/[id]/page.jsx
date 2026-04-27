@@ -2,6 +2,7 @@ import Categories from "@/components/homepage/news/Categories";
 import NesSection from "@/components/homepage/news/NesSection";
 import Social from "@/components/homepage/Social";
 import { getNewsByCategory } from "@/lib/data";
+import { notFound } from "next/navigation";
 
 export const metadata = {
     title: "Online News Portal | Category",

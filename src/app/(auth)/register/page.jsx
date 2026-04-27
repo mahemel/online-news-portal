@@ -23,14 +23,14 @@ const RegisterPage = () => {
                 image,
                 email,
                 password,
-                callbackURL: "/login",
+                callbackURL: "/",
             },
             {
                 onRequest: (ctx) => {
                     <Loading></Loading>;
                 },
                 onSuccess: (ctx) => {
-                    router.push("/login");
+                    router.push("/");
                 },
                 onError: (ctx) => {
                     alert(ctx.error.message);

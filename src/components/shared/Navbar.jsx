@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navlink from "./Navlink";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Navbar = () => {
     const router = useRouter();
@@ -51,8 +52,20 @@ const Navbar = () => {
                     </div>
                 ) : session?.user ? (
                     <>
-                        <div className="flex items-center gap-4">
+                        <div className="flex gap-4 items-center">
+                            {session.user.image ? (
+                                <Image
+                                    src={session.user.image}
+                                    alt={session.user.name}
+                                    width={40}
+                                    height={40}
+                                    className="rounded-full object-cover h-10"
+                                />
+                            ) : (
+                                ""
+                            )}
                             <p>{session.user.name}</p>
+
                             <button className="btn" onClick={handleSignOut}>
                                 Sign Out
                             </button>
