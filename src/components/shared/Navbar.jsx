@@ -2,9 +2,10 @@
 import Link from "next/link";
 import Navlink from "./Navlink";
 import { authClient } from "@/lib/auth-client";
-import { signOut } from "better-auth/api";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+    const router = useRouter();
     const links = [
         {
             id: 1,
@@ -23,10 +24,11 @@ const Navbar = () => {
         },
     ];
 
-    const { data: session } = authClient.useSession();
+    const { data: session, isPending } = authClient.useSession();
 
     const handleSignOut = () => {
         authClient.signOut();
+        router.push("/login");
     };
 
     return (
@@ -43,7 +45,11 @@ const Navbar = () => {
             </ul>
 
             <div className="flex justify-end">
-                {session?.user ? (
+                {isPending ? (
+                    <div className="flex">
+                        <span className="loading loading-ring loading-md"></span>
+                    </div>
+                ) : session?.user ? (
                     <>
                         <div className="flex items-center gap-4">
                             <p>{session.user.name}</p>
