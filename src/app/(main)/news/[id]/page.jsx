@@ -24,7 +24,7 @@ const NewsDetailPage = async ({ params }) => {
     }
 
     return (
-        <div className="mt-15">
+        <div className="m-15 ">
             <div className="w-8/12 mx-auto space-y-5">
                 <div className="card bg-base-100 border border-[#E7E7E7] rounded-md">
                     <div className="flex items-center gap-3 p-4 bg-gray-200">
