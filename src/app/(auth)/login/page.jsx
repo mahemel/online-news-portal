@@ -12,8 +12,6 @@ const LoginPage = () => {
     } = useForm();
 
     const handleLoginFn = async (formData) => {
-        console.log(formData, "Data");
-
         const { email, password } = formData;
 
         const { data, error } = await authClient.signIn.email(

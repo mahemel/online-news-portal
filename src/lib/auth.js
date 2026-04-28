@@ -7,7 +7,6 @@ const db = client.db('online-new-signup');
 
 export const auth = betterAuth({
     database: mongodbAdapter(db, {
-        // Optional: if you don't provide a client, database transactions won't be enabled.
         client,
     }),
     emailAndPassword: {
@@ -25,6 +24,3 @@ export const auth = betterAuth({
         },
     },
 });
-
-//online-news-portal
-//XQH0iaaIj31xihFk
