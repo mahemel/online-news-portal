@@ -6,6 +6,15 @@ const client = new MongoClient(process.env.DB_URI);
 const db = client.db('online-new-signup');
 
 export const auth = betterAuth({
+
+    secret: process.env.BETTER_AUTH_SECRET,
+    baseURL: process.env.BETTER_AUTH_URL,
+
+    trustedOrigins: [
+        "http://localhost:3000",
+        "https://mahemel-online-news-portal.vercel.app",
+    ],
+
     database: mongodbAdapter(db, {
         client,
     }),
